@@ -6,7 +6,7 @@ This is a modern portfolio website for Muhammad Zahid, a full-stack developer sh
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 Design style: Dark theme with black background and professional layout inspired by modern portfolio designs.
-Contact details: muhammad.zahid2114@gmail.com, +92 341 8463754, Gujranwala, Pakistan.
+Contact details: zahidrajpoot790@gmail.com, +92 341 8463754, Gujranwala, Pakistan.
 EmailJS integration enabled for contact form submissions.
 
 ## System Architecture

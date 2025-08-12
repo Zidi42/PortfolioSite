@@ -55,8 +55,8 @@ export const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="w-4 h-4 text-blue-400" />
-                <a href="mailto:muhammad.zahid2114@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  muhammad.zahid2114@gmail.com
+                <a href="mailto:zahidrajpoot790@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  zahidrajpoot790@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">

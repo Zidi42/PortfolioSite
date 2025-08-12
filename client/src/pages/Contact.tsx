@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { FaLinkedin, FaGithub, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
@@ -19,8 +19,16 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  // Initialize EmailJS
+  useEffect(() => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    }
+  }, []);
+
   const contactInfo = [
-    { icon: Mail, title: "Email", value: "muhammad.zahid2114@gmail.com" },
+    { icon: Mail, title: "Email", value: "zahidrajpoot790@gmail.com" },
     { icon: Phone, title: "Phone", value: "+92 341 8463754" },
     { icon: MapPin, title: "Location", value: "Gujranwala, Pakistan" }
   ];
@@ -45,20 +53,51 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Please fill in all required fields",
+        description: "Name, email, and message are required.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration missing:', { serviceId: !!serviceId, templateId: !!templateId, publicKey: !!publicKey });
+      toast({
+        title: "Configuration Error",
+        description: "Please contact me directly at zahidrajpoot790@gmail.com",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // EmailJS configuration
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      console.log('Sending email with EmailJS...');
+      
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
-          subject: formData.subject,
+          subject: formData.subject || 'Contact Form Submission',
           message: formData.message,
-          to_email: 'muhammad.zahid2114@gmail.com'
+          to_email: 'zahidrajpoot790@gmail.com',
+          reply_to: formData.email
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        publicKey
       );
+
+      console.log('EmailJS response:', result);
 
       toast({
         title: "Message sent successfully!",
@@ -73,10 +112,10 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('EmailJS Error Details:', error);
       toast({
         title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
+        description: "Please try again or contact me directly at zahidrajpoot790@gmail.com",
         variant: "destructive",
       });
     } finally {
