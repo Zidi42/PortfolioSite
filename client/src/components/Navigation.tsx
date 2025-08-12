@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Code2, Home, FolderOpen, User, Briefcase, Settings, FileText, MessageSquare, Mail } from "lucide-react";
-import AdSpace from "./AdSpace";
 
 const Navigation = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -26,10 +25,6 @@ const Navigation = () => {
     <>
       {/* Top Header with Ad Banner */}
       <header className="sticky top-0 z-50">
-        <AdSpace
-          type="banner"
-          className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700"
-        />
         
         {/* Top Navigation Bar */}
         <nav className="bg-white dark:bg-slate-900 shadow-lg">

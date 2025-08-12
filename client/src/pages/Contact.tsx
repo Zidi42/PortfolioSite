@@ -64,10 +64,15 @@ const Contact = () => {
       return;
     }
 
-    // Validate environment variables
+    // Validate environment variables (Note: These might be swapped in the env)
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    // Check if the values look correct (service_xxx vs template_xxx)
+    console.log('Checking IDs format:');
+    console.log('Service ID format:', serviceId?.substring(0, 8));
+    console.log('Template ID format:', templateId?.substring(0, 8));
 
     if (!serviceId || !templateId || !publicKey) {
       console.error('EmailJS configuration missing:', { serviceId: !!serviceId, templateId: !!templateId, publicKey: !!publicKey });
@@ -82,18 +87,25 @@ const Contact = () => {
 
     try {
       console.log('Sending email with EmailJS...');
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      console.log('Public Key:', publicKey ? 'Present' : 'Missing');
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Contact Form Submission',
+        message: formData.message,
+        to_email: 'zahidrajpoot790@gmail.com',
+        reply_to: formData.email
+      };
+      
+      console.log('Template params:', templateParams);
       
       const result = await emailjs.send(
         serviceId,
         templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject || 'Contact Form Submission',
-          message: formData.message,
-          to_email: 'zahidrajpoot790@gmail.com',
-          reply_to: formData.email
-        },
+        templateParams,
         publicKey
       );
 
