@@ -1,123 +1,182 @@
-import { FileText, Calendar, Clock, ArrowRight, Mail } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import AdSpace from "@/components/AdSpace";
 
 const Blog = () => {
-  const blogPosts = [
+  const posts = [
     {
-      title: "React Best Practices for 2024",
-      excerpt: "Discover the latest React patterns and best practices that will help you write cleaner, more maintainable code. From hooks optimization to component composition strategies...",
-      date: "March 15, 2024",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      tags: ["React", "JavaScript"]
-    },
-    {
-      title: "Optimizing Node.js Performance",
-      excerpt: "Learn advanced techniques for improving your Node.js application performance. From memory management to clustering strategies, boost your server efficiency...",
-      date: "March 8, 2024",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      tags: ["Node.js", "Performance"]
-    },
-    {
-      title: "Mastering CSS Grid Layouts",
-      excerpt: "A comprehensive guide to CSS Grid that covers everything from basic concepts to advanced layout techniques. Create complex, responsive designs with ease...",
-      date: "February 28, 2024",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      tags: ["CSS", "Layout"]
-    },
-    {
-      title: "Modern Deployment Strategies",
-      excerpt: "Explore modern deployment strategies including containerization, CI/CD pipelines, and cloud services. Learn how to deploy applications efficiently and securely...",
-      date: "February 20, 2024",
+      title: "How to Implement SEO Best Practices in React Applications",
+      excerpt: "Learn how to optimize your React applications for search engines with practical tips and techniques that can improve your site's visibility.",
+      date: "December 15, 2024",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      tags: ["DevOps", "Docker"]
+      category: "React",
+      featured: true
+    },
+    {
+      title: "Building Scalable APIs with Node.js and Express",
+      excerpt: "A comprehensive guide to creating robust, scalable backend services that can handle high-traffic applications with ease.",
+      date: "December 10, 2024", 
+      readTime: "12 min read",
+      category: "Backend",
+      featured: false
+    },
+    {
+      title: "Modern CSS Techniques for Better User Interfaces",
+      excerpt: "Explore advanced CSS features and techniques that can help you create stunning, responsive user interfaces without relying on heavy frameworks.",
+      date: "December 5, 2024",
+      readTime: "6 min read", 
+      category: "CSS",
+      featured: false
+    },
+    {
+      title: "Database Optimization Strategies for Web Applications",
+      excerpt: "Learn how to optimize your database queries and structure for better performance in your web applications.",
+      date: "November 28, 2024",
+      readTime: "10 min read",
+      category: "Database",
+      featured: false
+    },
+    {
+      title: "Getting Started with TypeScript in 2024",
+      excerpt: "A beginner-friendly guide to TypeScript that covers everything you need to know to start using it in your projects.",
+      date: "November 20, 2024",
+      readTime: "15 min read",
+      category: "TypeScript", 
+      featured: false
+    },
+    {
+      title: "Deployment Best Practices with Docker and CI/CD",
+      excerpt: "Learn how to streamline your deployment process using Docker containers and continuous integration/deployment pipelines.",
+      date: "November 15, 2024",
+      readTime: "14 min read",
+      category: "DevOps",
+      featured: false
     }
   ];
 
+  const categories = ["All", "React", "Backend", "CSS", "Database", "TypeScript", "DevOps"];
+
   return (
-    <main className="max-w-7xl mx-auto">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
-              <FileText className="w-12 h-12 text-primary mr-3" />
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white">My Blog</h1>
+              <BookOpen className="w-12 h-12 text-blue-400 mr-3" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white">Client Success Stories</h1>
             </div>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Thoughts, tutorials, and insights from my journey in web development and technology.
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Hear from our satisfied clients about their experience working with us and 
+              the results we've delivered.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {blogPosts.map((post, index) => (
-              <Card key={index} className="overflow-hidden card-hover border border-slate-200 dark:border-slate-700">
-                <div className="relative">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={category === "All" ? "default" : "outline"}
+                className={category === "All" 
+                  ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                  : "border-gray-600 text-gray-300 hover:bg-gray-700"
+                }
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">50+</div>
+                <div className="text-sm text-gray-300">Projects Delivered</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">40+</div>
+                <div className="text-sm text-gray-300">Happy Clients</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">5+</div>
+                <div className="text-sm text-gray-300">Years Experience</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">4.9★</div>
+                <div className="text-sm text-gray-300">Rated by 30+ Clients</div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Blog Posts Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post, index) => (
+              <Card key={index} className="bg-gray-800 border-gray-700 hover:border-gray-600 transition-all duration-300">
                 <CardHeader>
-                  <div className="flex items-center mb-3 text-sm text-slate-500 dark:text-slate-400">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    <span>{post.date}</span>
-                    <span className="mx-2">•</span>
-                    <Clock className="w-4 h-4 mr-1" />
-                    <span>{post.readTime}</span>
+                  <div className="flex items-center justify-between mb-4">
+                    <Badge className="bg-blue-600/20 text-blue-400 border-blue-600/30">
+                      {post.category}
+                    </Badge>
+                    {post.featured && (
+                      <Badge className="bg-yellow-600/20 text-yellow-400 border-yellow-600/30">
+                        Featured
+                      </Badge>
+                    )}
                   </div>
-                  <h3 className="text-xl font-bold text-secondary dark:text-white hover:text-primary transition-colors cursor-pointer">
+                  <CardTitle className="text-white leading-tight">
                     {post.title}
-                  </h3>
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                  <p className="text-gray-300 mb-4 leading-relaxed">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
-                      {post.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
+                  <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {post.date}
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-blue-600">
-                      Read More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {post.readTime}
+                    </div>
                   </div>
+                  <Button variant="ghost" className="w-full text-blue-400 hover:bg-blue-600/10">
+                    Read More
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          {/* Newsletter Subscription */}
-          <Card className="bg-gradient-to-r from-primary to-blue-600 border-none">
-            <CardContent className="text-center py-12 text-white">
-              <Mail className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-              <p className="mb-6 max-w-2xl mx-auto opacity-90">
-                Subscribe to my newsletter to get the latest articles and tutorials delivered straight to your inbox.
-              </p>
-              <div className="flex max-w-md mx-auto gap-3">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="bg-white text-slate-800 border-none"
-                />
-                <Button variant="secondary">
-                  Subscribe
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+          {/* CTA Section */}
+          <div className="text-center mt-16">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Ready to join our satisfied clients?
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                Start Your Project
+              </Button>
+              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                View Our Work
+              </Button>
+              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                Free Website Analysis
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

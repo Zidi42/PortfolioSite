@@ -1,10 +1,13 @@
 # Muhammad Zahid Portfolio Website
 
 ## Overview
-This is a modern portfolio website for Muhammad Zahid, a web developer showcasing his skills, projects, services, and professional experience. The application is built as a full-stack web application with a React frontend and Express.js backend, featuring a clean, professional design with comprehensive sections including projects, skills, testimonials, blog, and contact information. The site includes placeholder ad spaces throughout the layout and implements a responsive design pattern suitable for professional portfolio presentation.
+This is a modern portfolio website for Muhammad Zahid, a full-stack developer showcasing his skills, projects, services, and professional experience. The application is built as a full-stack web application with a React frontend and Express.js backend, featuring a sleek black theme design inspired by professional portfolio layouts. The site includes comprehensive sections for projects, skills, testimonials, blog, contact information, and implements EmailJS integration for contact form functionality. All placeholder images and ad spaces have been removed for a clean, professional presentation.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
+Design style: Dark theme with black background and professional layout inspired by modern portfolio designs.
+Contact details: muhammad.zahid2114@gmail.com, +92 341 8463754, Gujranwala, Pakistan.
+EmailJS integration enabled for contact form submissions.
 
 ## System Architecture
 

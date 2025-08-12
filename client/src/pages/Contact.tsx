@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { FaLinkedin, FaGithub, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
@@ -5,13 +6,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import AdSpace from "@/components/AdSpace";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   const contactInfo = [
-    { icon: Mail, title: "Email", value: "contact@muhammadzahid.dev" },
-    { icon: Phone, title: "Phone", value: "+1 (555) 123-4567" },
-    { icon: MapPin, title: "Location", value: "New York, NY" }
+    { icon: Mail, title: "Email", value: "muhammad.zahid2114@gmail.com" },
+    { icon: Phone, title: "Phone", value: "+92 341 8463754" },
+    { icon: MapPin, title: "Location", value: "Gujranwala, Pakistan" }
   ];
 
   const socialLinks = [
@@ -22,15 +33,67 @@ const Contact = () => {
     { icon: FaInstagram, href: "#", color: "bg-pink-600 hover:bg-pink-700" }
   ];
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // EmailJS configuration
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'muhammad.zahid2114@gmail.com'
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <main className="max-w-7xl mx-auto">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
-              <Mail className="w-12 h-12 text-primary mr-3" />
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white">Get In Touch</h1>
+              <Mail className="w-12 h-12 text-blue-400 mr-3" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white">Get In Touch</h1>
             </div>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
             </p>
           </div>
@@ -38,26 +101,26 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-2xl font-bold text-secondary dark:text-white mb-8">Let's Connect</h2>
+              <h2 className="text-2xl font-bold text-white mb-8">Let's Connect</h2>
               
               <div className="space-y-6 mb-8">
                 {contactInfo.map(({ icon: Icon, title, value }, index) => (
-                  <Card key={index} className="border border-slate-200 dark:border-slate-700">
+                  <Card key={index} className="bg-gray-800 border-gray-700">
                     <CardContent className="flex items-center p-4">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-4 ${
-                        index === 0 ? 'bg-primary/10' : 
-                        index === 1 ? 'bg-green-100 dark:bg-green-900' : 
-                        'bg-red-100 dark:bg-red-900'
+                        index === 0 ? 'bg-blue-600/20' : 
+                        index === 1 ? 'bg-green-600/20' : 
+                        'bg-red-600/20'
                       }`}>
                         <Icon className={`w-6 h-6 ${
-                          index === 0 ? 'text-primary' : 
-                          index === 1 ? 'text-green-500' : 
-                          'text-red-500'
+                          index === 0 ? 'text-blue-400' : 
+                          index === 1 ? 'text-green-400' : 
+                          'text-red-400'
                         }`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-secondary dark:text-white">{title}</h3>
-                        <p className="text-slate-600 dark:text-slate-300">{value}</p>
+                        <h3 className="font-semibold text-white">{title}</h3>
+                        <p className="text-gray-300">{value}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -65,15 +128,15 @@ const Contact = () => {
               </div>
 
               {/* Social Media Links */}
-              <Card className="border border-slate-200 dark:border-slate-700">
+              <Card className="bg-gray-800 border-gray-700">
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-secondary dark:text-white mb-4">Follow Me</h3>
+                  <h3 className="font-semibold text-white mb-4">Follow Me</h3>
                   <div className="flex space-x-4">
                     {socialLinks.map(({ icon: Icon, href, color }, index) => (
                       <a 
                         key={index}
                         href={href} 
-                        className={`w-12 h-12 text-white rounded-full flex items-center justify-center transition-colors ${color}`}
+                        className={`w-12 h-12 rounded-lg flex items-center justify-center text-white transition-colors ${color}`}
                       >
                         <Icon className="w-5 h-5" />
                       </a>
@@ -84,51 +147,90 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <Card className="border border-slate-200 dark:border-slate-700">
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader>
-                <CardTitle className="text-2xl text-secondary dark:text-white">Send a Message</CardTitle>
+                <CardTitle className="text-white">Send Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name" className="text-gray-300">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Your full name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                      />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
+                    <div>
+                      <Label htmlFor="email" className="text-gray-300">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                      />
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="Project Inquiry" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      rows={5} 
-                      placeholder="Tell me about your project..."
+                  <div>
+                    <Label htmlFor="subject" className="text-gray-300">Subject</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full" size="lg">
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                  <div>
+                    <Label htmlFor="message" className="text-gray-300">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell me about your project..."
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    disabled={isSubmitting}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
             </Card>
           </div>
-        </section>
+        </div>
+      </section>
     </main>
   );
 };

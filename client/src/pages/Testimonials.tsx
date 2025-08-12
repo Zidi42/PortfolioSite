@@ -1,112 +1,174 @@
-import { MessageSquare, Star, BarChart3, Users, Clock, Award } from "lucide-react";
+import { Star, Quote, CheckCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import AdSpace from "@/components/AdSpace";
+import { Button } from "@/components/ui/button";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      content: "Muhammad delivered an exceptional e-commerce platform that exceeded our expectations. His attention to detail and technical expertise made the entire process smooth and efficient. Highly recommended!",
-      author: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b17c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-      rating: 5
+      name: "Gabriel Sher",
+      role: "CEO, Untapped Africa",
+      company: "LinkedIn Connect",
+      rating: 5,
+      content: "Working with Muhammad on the Untapped Africa website was a fantastic experience. He understood our vision and delivered a stunning, user-friendly site that exceeded our expectations. His professionalism, creativity, and attention to detail made the process smooth and enjoyable.",
+      avatar: "GS"
     },
     {
-      content: "Working with Muhammad was a game-changer for our business. He transformed our outdated website into a modern, responsive platform that has significantly improved our user engagement and conversions.",
-      author: "Michael Chen",
-      role: "CTO, DataFlow Solutions",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-      rating: 5
+      name: "Darren Youngleson", 
+      role: "Serial Entrepreneur",
+      company: "LinkedIn Connect",
+      rating: 5,
+      content: "Muhammad is an absolute winner. No limits to his depth of expertise, unwavering customer service and quality of his product and creativity. Highly recommend working with Muhammad.",
+      avatar: "DY"
     },
     {
-      content: "The mobile app Muhammad developed for us has been instrumental in reaching our target audience. His expertise in React Native and user experience design really shows in the final product.",
-      author: "Emily Rodriguez",
-      role: "Founder, FitLife App",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-      rating: 5
+      name: "Anoushka Rademeyer",
+      role: "Head of Digital Communications & Reputation at ASK AFRICA",
+      company: "LinkedIn Connect",
+      rating: 5,
+      content: "Muhammad delivered highly professional work with excellent attention to detail. His expertise in digital communications and web development made our project a success.",
+      avatar: "AR"
     },
     {
-      content: "Muhammad's consulting services helped our team adopt modern development practices. His knowledge of DevOps and deployment strategies has significantly improved our development workflow.",
-      author: "David Thompson",
-      role: "Lead Developer, InnovateTech",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-      rating: 5
+      name: "Royi Mazor",
+      role: "Owner, A Secure Annapolis Locksmith",
+      company: "",
+      rating: 5,
+      content: "Very professional wonderful customer service, thank you Muhammad for all that you did, will definitely be using for future projects!",
+      avatar: "RM"
+    },
+    {
+      name: "Omar Turner",
+      role: "Chief Executive Officer, Binns Media Group, New York",
+      company: "LinkedIn Connect",
+      rating: 5,
+      content: "Muhammad was able to execute the vision perfectly! He's big on communication and easy to speak with. Muhammad dedicates his time to the client ensuring the client is completely satisfied at each step of the process. I highly recommend Muhammad's services to anyone who needs a web developer who can execute on a vision and provide a professional finished product!",
+      avatar: "OT"
+    },
+    {
+      name: "Bradley Thompson",
+      role: "Marketing Director",
+      company: "LinkedIn Connect", 
+      rating: 5,
+      content: "Muhammad's expertise in web development is truly exceptional. He delivered a website that not only looks stunning but also performs flawlessly. His attention to detail and commitment to quality made the entire process smooth and enjoyable.",
+      avatar: "BT"
     }
   ];
 
-  const stats = [
-    { icon: BarChart3, value: "50+", label: "Projects Completed" },
-    { icon: Users, value: "30+", label: "Happy Clients" },
-    { icon: Clock, value: "5+", label: "Years Experience" },
-    { icon: Award, value: "4.9", label: "Average Rating" }
-  ];
-
   const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star 
-        key={i} 
-        className={`w-5 h-5 ${i < rating ? 'text-yellow-400 fill-current' : 'text-slate-300 dark:text-slate-600'}`} 
+    return Array.from({ length: 5 }, (_, index) => (
+      <Star
+        key={index}
+        className={`w-4 h-4 ${
+          index < rating ? 'text-yellow-400 fill-current' : 'text-gray-600'
+        }`}
       />
     ));
   };
 
   return (
-    <main className="max-w-7xl mx-auto">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
-              <MessageSquare className="w-12 h-12 text-primary mr-3" />
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white">Testimonials</h1>
+              <Users className="w-12 h-12 text-blue-400 mr-3" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white">Client Success Stories</h1>
             </div>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              What my clients say about working with me and the results we've achieved together.
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Hear from our satisfied clients about their experience working with us and 
+              the results we've delivered.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">50+</div>
+                <div className="text-sm text-gray-300">Projects Delivered</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">40+</div>
+                <div className="text-sm text-gray-300">Happy Clients</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">5+</div>
+                <div className="text-sm text-gray-300">Years Experience</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-800 border-gray-700 text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-white mb-2">4.9★</div>
+                <div className="text-sm text-gray-300">Rated by 30+ Clients</div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Testimonials Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="card-hover border border-slate-200 dark:border-slate-700">
-                <CardContent className="pt-8">
-                  <div className="flex items-center mb-6">
-                    <MessageSquare className="w-8 h-8 text-primary mr-4" />
-                    <div className="flex">
-                      {renderStars(testimonial.rating)}
+              <Card key={index} className="bg-gray-800 border-gray-700 hover:border-gray-600 transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                        {testimonial.avatar}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                        <p className="text-sm text-gray-400">{testimonial.role}</p>
+                      </div>
                     </div>
+                    {testimonial.company && (
+                      <div className="text-blue-400 text-sm">
+                        📊 Connect
+                      </div>
+                    )}
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed text-lg italic">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={`${testimonial.author} profile`}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-secondary dark:text-white">{testimonial.author}</h4>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{testimonial.role}</p>
-                    </div>
+                  
+                  <div className="flex items-center mb-4">
+                    {renderStars(testimonial.rating)}
+                  </div>
+                  
+                  <div className="relative">
+                    <Quote className="w-6 h-6 text-blue-400 mb-2" />
+                    <p className="text-gray-300 leading-relaxed">
+                      {testimonial.content}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          {/* Stats Section */}
-          <Card className="bg-gradient-to-r from-primary to-blue-600 border-none">
-            <CardContent className="py-12">
-              <div className="grid md:grid-cols-4 gap-8 text-center text-white">
-                {stats.map(({ icon: Icon, value, label }, index) => (
-                  <div key={index}>
-                    <Icon className="w-12 h-12 mx-auto mb-3" />
-                    <div className="text-3xl font-bold mb-2">{value}</div>
-                    <div className="text-blue-100">{label}</div>
-                  </div>
-                ))}
+          <div className="text-center">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white mb-4">
+              Show More Reviews ↓
+            </Button>
+            
+            <div className="mt-12">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                Ready to join our satisfied clients?
+              </h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Start Your Project
+                </Button>
+                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                  View Our Work
+                </Button>
+                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                  Free Website Analysis
+                </Button>
               </div>
-            </CardContent>
-          </Card>
-        </section>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

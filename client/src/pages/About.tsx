@@ -1,6 +1,5 @@
 import { User, Code, Camera, BookOpen, Plane, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import AdSpace from "@/components/AdSpace";
 
 const About = () => {
   const interests = [
@@ -18,29 +17,28 @@ const About = () => {
   ];
 
   return (
-    <main className="max-w-7xl mx-auto">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
-              <User className="w-12 h-12 text-primary mr-3" />
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white">About Me</h1>
+              <User className="w-12 h-12 text-blue-400 mr-3" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white">About Me</h1>
             </div>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Get to know the person behind the code and the passion that drives my work.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600" 
-                alt="Muhammad Zahid profile" 
-                className="rounded-2xl shadow-xl w-full max-w-md mx-auto"
-              />
+              <div className="w-full max-w-md mx-auto h-80 bg-gray-800 border border-gray-700 rounded-2xl flex items-center justify-center">
+                <User className="w-24 h-24 text-gray-600" />
+              </div>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-secondary dark:text-white mb-6">Hello, I'm Muhammad Zahid</h2>
-              <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+              <h2 className="text-3xl font-bold text-white mb-6">Hello, I'm Muhammad Zahid</h2>
+              <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                   I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that make a difference. My journey in technology started with a curiosity about how things work and has evolved into a deep love for crafting elegant, user-centric applications.
                 </p>
@@ -54,37 +52,38 @@ const About = () => {
             </div>
           </div>
 
-          <Card className="mb-8 border border-slate-200 dark:border-slate-700">
+          <Card className="mb-8 bg-gray-800 border-gray-700">
             <CardContent className="pt-8">
-              <h3 className="text-2xl font-bold text-secondary dark:text-white mb-8 text-center">Interests & Hobbies</h3>
+              <h3 className="text-2xl font-bold text-white mb-8 text-center">Interests & Hobbies</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {interests.map(({ icon: Icon, title, description }) => (
-                  <div key={title} className="text-center p-4 border border-slate-200 dark:border-slate-600 rounded-lg hover:shadow-md transition-shadow">
-                    <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">{title}</h4>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{description}</p>
+                  <div key={title} className="text-center p-4 border border-gray-600 rounded-lg hover:border-gray-500 transition-colors">
+                    <Icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                    <h4 className="font-semibold mb-2 text-white">{title}</h4>
+                    <p className="text-sm text-gray-300">{description}</p>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 dark:border-slate-700">
+          <Card className="bg-gray-800 border-gray-700">
             <CardContent className="pt-8">
-              <h3 className="text-2xl font-bold text-secondary dark:text-white mb-6 text-center">Fun Facts</h3>
-              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
-                <ul className="space-y-3">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center">Fun Facts</h3>
+              <div className="bg-gray-700 rounded-lg p-6">
+                <div className="grid md:grid-cols-2 gap-4">
                   {funFacts.map((fact, index) => (
-                    <li key={index} className="flex items-center text-slate-600 dark:text-slate-300">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      {fact}
-                    </li>
+                    <div key={index} className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <span className="text-gray-300">{fact}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </CardContent>
           </Card>
-        </section>
+        </div>
+      </section>
     </main>
   );
 };
