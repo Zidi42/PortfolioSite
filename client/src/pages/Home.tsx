@@ -1,6 +1,7 @@
 import { FaRocket, FaUsers, FaStar } from 'react-icons/fa';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'wouter';
 import profilePicture from '@assets/zahid_1755007194356.jpg';
 
 export const Home = () => {
@@ -53,12 +54,16 @@ export const Home = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border border-blue-600">
-                  GET FREE QUOTE →
-                </Button>
-                <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                  BOOK STRATEGY CALL 📅
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border border-blue-600">
+                    GET FREE QUOTE →
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                    BOOK STRATEGY CALL 📅
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -123,12 +128,16 @@ export const Home = () => {
             Let's discuss your project and see how we can help you achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-              Start Your Project
-            </Button>
-            <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-              View Our Work
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                Start Your Project
+              </Button>
+            </Link>
+            <Link href="/projects">
+              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                View Our Work
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
