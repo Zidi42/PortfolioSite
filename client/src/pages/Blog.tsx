@@ -42,16 +42,7 @@ const Blog = () => {
   ];
 
   return (
-    <main className="flex">
-      {/* Sidebar Ad */}
-      <div className="hidden lg:block w-64 p-4">
-        <div className="sticky top-24">
-          <AdSpace type="sidebar" />
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 max-w-5xl mx-auto">
+    <main className="max-w-7xl mx-auto">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
@@ -127,7 +118,6 @@ const Blog = () => {
             </CardContent>
           </Card>
         </section>
-      </div>
     </main>
   );
 };
