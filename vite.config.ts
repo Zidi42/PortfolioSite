@@ -13,8 +13,8 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"), // your React app folder
   build: {
-    outDir: path.resolve(__dirname, "build"), // static deploy folder for Vercel/Netlify
-    emptyOutDir: true, // clear previous builds
+    outDir: path.resolve(__dirname, "build"), // static deploy folder for Netlify/Vercel
+    emptyOutDir: true,
   },
   server: {
     fs: {
