@@ -11,14 +11,14 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
-  root: path.resolve(__dirname, "client"),
+  root: path.resolve(__dirname, "client"), // your React app folder
   build: {
-    outDir: path.resolve(__dirname, "build"), // <-- static deploy folder
-    emptyOutDir: true,
+    outDir: path.resolve(__dirname, "build"), // static deploy folder for Vercel/Netlify
+    emptyOutDir: true, // clear previous builds
   },
   server: {
     fs: {
-      strict: true,
+      strict: true, // allow only project files
     },
   },
 });
