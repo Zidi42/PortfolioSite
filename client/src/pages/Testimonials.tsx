@@ -1,6 +1,7 @@
 import { Star, Quote, CheckCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 const Testimonials = () => {
   const testimonials = [
@@ -146,24 +147,29 @@ const Testimonials = () => {
           </div>
 
           <div className="text-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white mb-4">
-              Show More Reviews ↓
-            </Button>
+            
             
             <div className="mt-12">
               <h2 className="text-2xl font-bold text-white mb-4">
                 Ready to join our satisfied clients?
               </h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                  Start Your Project
-                </Button>
-                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                <Link href="/contact">
+                <Button className="bg-blue-600 hover:bg-blue-700">Start Your Project</Button>
+              </Link>
+              <Link href="/projects">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
                   View Our Work
                 </Button>
-                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                  Free Website Analysis
-                </Button>
+              </Link>
+               <Link href="/websiteanalysis">
+          <Button
+            variant="outline"
+            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+          >
+            Free Website Analysis
+          </Button>
+        </Link>
               </div>
             </div>
           </div>

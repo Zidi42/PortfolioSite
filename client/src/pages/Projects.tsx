@@ -102,25 +102,26 @@ const Projects = () => {
                     ))}
                   </div>
                   <div className="flex space-x-4">
-                    <a 
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-                        <ExternalLink className="w-4 h-4 mr-1" />
-                        Read Case Study →
-                      </Button>
-                    </a>
+                    <a
+                        href="https://ww25.example-ecommerce.com/?subid1=20250813-1428-06d0-9fd9-4ca5884cc0fe"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          Read Case Study →
+                        </Button>
+                      </a>
+
                     <a 
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+                      {/* <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
                         <Github className="w-4 h-4 mr-1" />
                         View Live Website
-                      </Button>
+                      </Button> */}
                     </a>
                   </div>
                 </CardContent>
@@ -131,7 +132,7 @@ const Projects = () => {
           <div className="text-center">
             <Link href="/contact">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                View All Projects →
+                Start Your First Project →
               </Button>
             </Link>
           </div>

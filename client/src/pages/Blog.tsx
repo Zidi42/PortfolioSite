@@ -2,6 +2,7 @@ import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "wouter";
 
 const Blog = () => {
   const posts = [
@@ -104,7 +105,7 @@ const Blog = () => {
             </Card>
             <Card className="bg-gray-800 border-gray-700 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-white mb-2">5+</div>
+                <div className="text-3xl font-bold text-white mb-2">4+</div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </CardContent>
             </Card>
@@ -149,10 +150,10 @@ const Blog = () => {
                       {post.readTime}
                     </div>
                   </div>
-                  <Button variant="ghost" className="w-full text-blue-400 hover:bg-blue-600/10">
+                  {/* <Button variant="ghost" className="w-full text-blue-400 hover:bg-blue-600/10">
                     Read More
                     <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             ))}
@@ -164,15 +165,22 @@ const Blog = () => {
               Ready to join our satisfied clients?
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Start Your Project
-              </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                View Our Work
-              </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                Free Website Analysis
-              </Button>
+               <Link href="/contact">
+                <Button className="bg-blue-600 hover:bg-blue-700">Start Your Project</Button>
+              </Link>
+              <Link href="/projects">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                  View Our Work
+                </Button>
+              </Link>
+               <Link href="/websiteanalysis">
+          <Button
+            variant="outline"
+            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+          >
+            Free Website Analysis
+          </Button>
+        </Link>
             </div>
           </div>
         </div>

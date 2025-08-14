@@ -1,6 +1,7 @@
-import { Briefcase, Code, Smartphone, Server, Palette, Rocket, GraduationCap, CheckCircle } from "lucide-react";
+import { Briefcase, Code, Smartphone, Server, Palette, Rocket, GraduationCap, CheckCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "wouter";
 
 const Services = () => {
   const services = [
@@ -9,7 +10,6 @@ const Services = () => {
       title: "Web Development",
       description: "SEO-ready websites that load in under 2 seconds and drive up to 40% more leads",
       features: ["98/100 PageSpeed score", "Mobile-first responsive design", "Conversion-optimized layouts"],
-      price: "Starting at $2,500",
       color: "text-blue-400"
     },
     {
@@ -17,7 +17,6 @@ const Services = () => {
       title: "UI/UX Design",
       description: "User-centered designs that increase engagement by 35% and reduce bounce rates by 40%",
       features: ["Data-driven design decisions", "Intuitive user journeys", "A/B tested interfaces"],
-      price: "Starting at $2,200",
       color: "text-green-400"
     },
     {
@@ -25,32 +24,15 @@ const Services = () => {
       title: "SaaS Development",
       description: "End-to-end SaaS solutions that reduce operational costs by 25% and scale with your business",
       features: ["Scalable architecture", "99.9% uptime guarantee", "Secure data handling"],
-      price: "Starting at $3,500",
       color: "text-purple-400"
     }
   ];
 
   const processSteps = [
-    {
-      step: "1",
-      title: "Discovery & Strategy",
-      description: "35% more effective project outcomes through comprehensive research and planning"
-    },
-    {
-      step: "2", 
-      title: "Design & Prototyping",
-      description: "40% higher engagement with user-tested interfaces and interactive prototypes"
-    },
-    {
-      step: "3",
-      title: "Development & Testing", 
-      description: "98/100 PageSpeed scores through optimized code and rigorous testing"
-    },
-    {
-      step: "4",
-      title: "Launch & Support",
-      description: "99.9% uptime with continuous monitoring and proactive maintenance"
-    }
+    { step: "1", title: "Discovery & Strategy", description: "35% more effective project outcomes through comprehensive research and planning" },
+    { step: "2", title: "Design & Prototyping", description: "40% higher engagement with user-tested interfaces and interactive prototypes" },
+    { step: "3", title: "Development & Testing", description: "98/100 PageSpeed scores through optimized code and rigorous testing" },
+    { step: "4", title: "Launch & Support", description: "99.9% uptime with continuous monitoring and proactive maintenance" }
   ];
 
   const technologies = {
@@ -84,7 +66,7 @@ const Services = () => {
             <div className="w-full bg-gray-700 rounded-full h-2 mb-6">
               <div className="bg-blue-400 h-2 rounded-full w-full"></div>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-8">
               <div>
                 <h4 className="text-white font-semibold mb-3 flex items-center">
@@ -92,43 +74,31 @@ const Services = () => {
                   Design Phase
                 </h4>
                 <div className="space-y-2 text-sm text-gray-300">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    User Research
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    Wireframing
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    UI Design
-                  </div>
+                  {["User Research", "Wireframing", "UI Design"].map((item, i) => (
+                    <div key={i} className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
-              
+
               <div>
                 <h4 className="text-white font-semibold mb-3 flex items-center">
                   <Server className="w-4 h-4 mr-2" />
                   Development Phase
                 </h4>
                 <div className="space-y-2 text-sm text-gray-300">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    Frontend
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    Backend
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-                    Testing
-                  </div>
+                  {["Frontend", "Backend", "Testing"].map((item, i) => (
+                    <div key={i} className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-            
+
             <div className="text-center mt-6">
               <span className="text-green-400 font-semibold flex items-center justify-center">
                 <CheckCircle className="w-5 h-5 mr-2" />
@@ -157,10 +127,13 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="text-blue-400 font-semibold text-lg mb-4">{service.price}</div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                    Learn More →
-                  </Button>
+
+                  <Link href="/contact">
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      Start Your Project →
+                      </Button>
+                  </Link>
+
                 </CardContent>
               </Card>
             ))}
@@ -172,7 +145,6 @@ const Services = () => {
             <p className="text-gray-300 text-center mb-12 max-w-2xl mx-auto">
               Results-focused solutions tailored to your specific business goals
             </p>
-            
             <div className="grid md:grid-cols-2 gap-8">
               {processSteps.map((step, index) => (
                 <Card key={index} className="bg-gray-800 border-gray-700">
@@ -225,16 +197,23 @@ const Services = () => {
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               <span className="text-white font-semibold">Results-focused solutions</span> tailored to your specific business goals
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Start Your Project
-              </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                View Our Work
-              </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                Free Website Analysis
-              </Button>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <Button className="bg-blue-600 hover:bg-blue-700">Start Your Project</Button>
+              </Link>
+              <Link href="/projects">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                  View Our Work
+                </Button>
+              </Link>
+          <Link href="/websiteanalysis">
+          <Button
+            variant="outline"
+            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+          >
+            Free Website Analysis
+          </Button>
+        </Link>
             </div>
           </div>
         </div>

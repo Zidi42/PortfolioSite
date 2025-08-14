@@ -1,4 +1,6 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { Link } from "wouter";
 
 export const Footer = () => {
   return (
@@ -12,13 +14,13 @@ export const Footer = () => {
               Full-stack design and development solutions that transform your vision into exceptional digital experiences.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.linkedin.com/in/muhammad-zahid-6429a526b/" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <FaLinkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://github.com/Zidi42" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <FaGithub className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://x.com/zahidrajpoot790" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <FaTwitter className="w-5 h-5" />
               </a>
             </div>
@@ -28,24 +30,68 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">Services</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Web Development</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">SaaS Development</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">API Development</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Startup MVP</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Mentorship</a></li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  SaaS Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  API Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Startup MVP
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Mentorship
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Portfolio */}
+          {/* Portfolio → Now Skills */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Portfolio</h4>
+            <h4 className="text-lg font-semibold text-white">Skills</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">All Projects</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Web Applications</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">E-commerce Sites</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">SaaS Platforms</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Mobile Apps</a></li>
+              <li>
+                <Link href="/skills" className="hover:text-blue-400 transition-colors">
+                  All Skills
+                </Link>
+              </li>
+              <li>
+                <Link href="/skills" className="hover:text-blue-400 transition-colors">
+                  Web Applications
+                </Link>
+              </li>
+              <li>
+                <Link href="/skills" className="hover:text-blue-400 transition-colors">
+                  E-commerce Sites
+                </Link>
+              </li>
+              <li>
+                <Link href="/skills" className="hover:text-blue-400 transition-colors">
+                  SaaS Platforms
+                </Link>
+              </li>
+              <li>
+                <Link href="/skills" className="hover:text-blue-400 transition-colors">
+                  Mobile Apps
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -77,16 +123,10 @@ export const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+          <div className="flex justify-center">
+            <p className="text-gray-400 text-sm font-semibold italic text-center">
               © 2025 Muhammad Zahid. All rights reserved. ● Available for new projects
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">Privacy</a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">Accessibility</a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">Cookies</a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">Sitemap</a>
-            </div>
           </div>
         </div>
       </div>

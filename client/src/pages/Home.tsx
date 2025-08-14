@@ -6,7 +6,9 @@ import { Progress } from '@/components/ui/progress';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Link } from 'wouter';
 import { useState } from 'react';
-import profilePicture from '@assets/zahid_1755007194356.jpg';
+import profilePicture from '@assets/zahid1.png';
+import cvFile from "@assets/MuhammadZahidCV.pdf";
+import { FileDown, Space } from 'lucide-react';
 
 export const Home = () => {
   const [openFaq, setOpenFaq] = useState<string | null>(null);
@@ -214,9 +216,10 @@ export const Home = () => {
               <div className="space-y-6">
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                   Muhammad Zahid - 
-                  <span className="block">Full Stack</span>
-                  <span className="block">Designer &</span>
-                  <span className="block">Developer</span>
+                  <span className="block">Full Stack Designer &</span>
+                  
+                  <span className="block">Front-End Developer</span>
+               
                 </h1>
                 
                 <div className="space-y-4 text-gray-300">
@@ -227,7 +230,7 @@ export const Home = () => {
                   </p>
                   
                   <p className="text-base">
-                    As a full-stack designer and developer with over 5 years of experience, I 
+                    As a full-stack designer and developer with over allmost 4 years of experience, I 
                     specialize in creating digital solutions that deliver measurable business 
                     results. From custom websites and SaaS platforms to comprehensive 
                     UI/UX design, I help businesses across three continents achieve their 
@@ -236,18 +239,35 @@ export const Home = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border border-blue-600">
-                    GET FREE QUOTE →
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                    BOOK STRATEGY CALL 📅
-                  </Button>
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border border-blue-600">
+                      GET FREE QUOTE →
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                    >
+                      BOOK STRATEGY CALL 📅
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* CV Download button below */}
+                <div className="mb-8">
+                  <a
+                    href={cvFile}
+                    download="Muhammad_Zahid_CV.pdf"
+                    className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium text-center inline-block"
+                  >
+                    DOWNLOAD MY CV ⬇️
+                  </a>
+                </div>
+
+
             </div>
 
             {/* Right Content - Profile Image */}
@@ -323,9 +343,9 @@ export const Home = () => {
                       <h4 className="font-semibold text-white">{testimonial.name}</h4>
                       <p className="text-sm text-gray-400">{testimonial.role}</p>
                     </div>
-                    <Button size="sm" variant="outline" className="ml-auto border-blue-600 text-blue-600">
+                    {/* <Button size="sm" variant="outline" className="ml-auto border-blue-600 text-blue-600">
                       Connect
-                    </Button>
+                    </Button> */}
                   </div>
                   <div className="flex items-center mb-3">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -339,9 +359,9 @@ export const Home = () => {
           </div>
 
           <div className="text-center">
-            <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+            {/* <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
               Show More Reviews
-            </Button>
+            </Button> */}
           </div>
 
           <div className="text-center mt-12">
@@ -355,9 +375,14 @@ export const Home = () => {
                   View Our Work
                 </Button>
               </Link>
-              <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
-                Free Website Analysis
-              </Button>
+          <Link href="/websiteanalysis">
+          <Button
+            variant="outline"
+            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+          >
+            Free Website Analysis
+          </Button>
+        </Link>
             </div>
           </div>
         </div>
@@ -617,9 +642,14 @@ export const Home = () => {
                 View Our Work
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
-              Free Website Analysis
-            </Button>
+           <Link href="/websiteanalysis">
+          <Button
+            variant="outline"
+            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+          >
+            Free Website Analysis
+          </Button>
+        </Link>
           </div>
         </div>
       </section>
