@@ -17,15 +17,14 @@ const Navigation = () => {
     { href: "/contact", label: "Contact", icon: Mail },
   ];
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const openSidebar = () => setIsSidebarOpen(true);
+  const closeSidebar = () => setIsSidebarOpen(false);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <>
       {/* Top Header with Ad Banner */}
       <header className="sticky top-0 z-50">
-        
         {/* Top Navigation Bar */}
         <nav className="bg-black shadow-lg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,12 +35,12 @@ const Navigation = () => {
               </Link>
 
               {/* Hamburger Menu Button */}
-              <button
+              <div 
                 className="text-gray-300 hover:text-white"
-                onClick={toggleSidebar}
+                onMouseEnter={openSidebar}  // 👈 hover par sidebar khulega
               >
-                <Menu className="w-6 h-6" />
-              </button>
+                <Menu className="w-6 h-6 cursor-pointer" />
+              </div>
             </div>
           </div>
         </nav>
@@ -51,7 +50,7 @@ const Navigation = () => {
       {isSidebarOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-20 z-40"
-          onClick={toggleSidebar}
+          onClick={closeSidebar}
         />
       )}
 
@@ -65,6 +64,7 @@ const Navigation = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
         }}
+        onMouseLeave={closeSidebar}   // 👈 mouse nikalte hi sidebar band
       >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-800/30">
@@ -74,7 +74,7 @@ const Navigation = () => {
           </Link>
           <button
             className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/30"
-            onClick={toggleSidebar}
+            onClick={closeSidebar}
           >
             <X className="w-5 h-5" />
           </button>
@@ -96,7 +96,7 @@ const Navigation = () => {
                         ? 'text-white' 
                         : 'text-gray-300 hover:text-white'
                     }`}
-                    onClick={toggleSidebar}
+                    onClick={closeSidebar}
                   >
                     {/* Active Circle Background */}
                     {isActive && (

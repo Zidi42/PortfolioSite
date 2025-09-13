@@ -230,7 +230,7 @@ export const Home = () => {
                   </p>
                   
                   <p className="text-base">
-                    As a full-stack designer and developer with over allmost 4 years of experience, I 
+                    As a full-stack designer and developer with over allmost 3+ years of experience, I 
                     specialize in creating digital solutions that deliver measurable business 
                     results. From custom websites and SaaS platforms to comprehensive 
                     UI/UX design, I help businesses across three continents achieve their 

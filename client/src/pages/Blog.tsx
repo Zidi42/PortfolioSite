@@ -105,7 +105,7 @@ const Blog = () => {
             </Card>
             <Card className="bg-gray-800 border-gray-700 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-white mb-2">4+</div>
+                <div className="text-3xl font-bold text-white mb-2">3+</div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </CardContent>
             </Card>
