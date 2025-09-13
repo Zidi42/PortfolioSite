@@ -16,7 +16,7 @@ export const Home = () => {
   const achievements = [
     { number: "50+", text: "Projects Delivered" },
     { number: "40+", text: "Happy Clients" },
-    { number: "5+", text: "Years Experience" },
+    { number: "3+", text: "Years Experience" },
     { number: "4.9★", text: "Rated by 30+ Clients" }
   ];
 

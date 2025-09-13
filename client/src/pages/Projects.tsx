@@ -12,7 +12,7 @@ const Projects = () => {
       icon: Globe,
       technologies: ["React", "Node.js", "MongoDB"],
       colors: ["bg-blue-600/20 text-blue-400", "bg-green-600/20 text-green-400", "bg-purple-600/20 text-purple-400"],
-      liveUrl: "https://example-ecommerce.com",
+      liveUrl: "https://aladdinpk.com/",
       githubUrl: "https://github.com/muhammadzahid/ecommerce"
     },
     {
@@ -21,7 +21,7 @@ const Projects = () => {
       icon: Cloud,
       technologies: ["React Native", "API Integration", "Geolocation"],
       colors: ["bg-blue-600/20 text-blue-400", "bg-orange-600/20 text-orange-400", "bg-indigo-600/20 text-indigo-400"],
-      liveUrl: "https://weather-app-demo.com",
+      liveUrl: "https://openweathermap.org/",
       githubUrl: "https://github.com/muhammadzahid/weather-app"
     },
     {
@@ -34,12 +34,12 @@ const Projects = () => {
       githubUrl: "https://github.com/muhammadzahid/task-manager"
     },
     {
-      title: "Analytics Dashboard",
+      title: "PortFolio Website",
       description: "Comprehensive analytics platform with real-time data visualization, custom reports, and interactive charts.",
       icon: Database,
       technologies: ["D3.js", "Express.js", "PostgreSQL"],
       colors: ["bg-blue-600/20 text-blue-400", "bg-green-600/20 text-green-400", "bg-red-600/20 text-red-400"],
-      liveUrl: "https://analytics-dashboard.com",
+      liveUrl: "https://muhammad-zahid-portfolio.firebaseapp.com/",
       githubUrl: "https://github.com/muhammadzahid/analytics"
     },
     {
