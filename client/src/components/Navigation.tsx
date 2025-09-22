@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Code2, Home, FolderOpen, User, Briefcase, Settings, FileText, MessageSquare, Mail } from "lucide-react";
 
+// Lucide icon for Privacy Policy (using FileWarning as an example)
+import { FileWarning } from "lucide-react"; 
+
 const Navigation = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [location] = useLocation();
@@ -15,6 +18,7 @@ const Navigation = () => {
     { href: "/blog", label: "Blog", icon: FileText },
     { href: "/testimonials", label: "Testimonials", icon: MessageSquare },
     { href: "/contact", label: "Contact", icon: Mail },
+    { href: "/privacy-policy", label: "Privacy Policy", icon: FileWarning }, // New item added here
   ];
 
   const openSidebar = () => setIsSidebarOpen(true);
@@ -37,7 +41,7 @@ const Navigation = () => {
               {/* Hamburger Menu Button */}
               <div 
                 className="text-gray-300 hover:text-white"
-                onMouseEnter={openSidebar}  // 👈 hover par sidebar khulega
+                onMouseEnter={openSidebar} 
               >
                 <Menu className="w-6 h-6 cursor-pointer" />
               </div>
@@ -64,7 +68,7 @@ const Navigation = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
         }}
-        onMouseLeave={closeSidebar}   // 👈 mouse nikalte hi sidebar band
+        onMouseLeave={closeSidebar} 
       >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-800/30">

@@ -15,6 +15,7 @@ import Testimonials from "@/pages/Testimonials";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 import WebsiteAnalysis from "./pages/WebsiteAnalysis";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
       <Route path="/websiteanalysis" component={WebsiteAnalysis} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route component={NotFound} />
     </Switch>
   );
